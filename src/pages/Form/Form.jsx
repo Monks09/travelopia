@@ -3,6 +3,7 @@ import styles from "./Form.module.css";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import Header from "../../components/Header/Header";
 import ConfirmSub from "../../components/ConfirmSub/ConfirmSub";
+import api from "../../components/Api";
 
 function Form(props) {
   const initialState = {
@@ -27,7 +28,7 @@ function Form(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
-    let res = await fetch(`http://localhost:3030/submissions`, {
+    let res = await fetch(`${api}/submissions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

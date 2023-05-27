@@ -3,6 +3,7 @@ import styles from "./Dashboard.module.css";
 import Header from "../../components/Header/Header";
 import { Spinner } from "@chakra-ui/react";
 import { CSVLink, CSVDownload } from "react-csv";
+import api from "../../components/Api";
 
 function Dashboard(props) {
   const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ function Dashboard(props) {
   }, [page]);
 
   const fetchData = async () => {
-    let res = await fetch(`http://localhost:3030/submissions?page=${page}`);
+    let res = await fetch(`${api}/submissions?page=${page}`);
     res = await res.json();
     // console.log(res);
     setData(res.submissions);
