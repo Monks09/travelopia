@@ -60,59 +60,61 @@ function Dashboard(props) {
     <div className={styles.dashboard}>
       <Header />
       {loading && <Spinner size="xl" color="teal" />}
-      <div className={styles.tableDiv}>
-        <div className={styles.csvDiv}>
-          <CSVLink data={csvData} filename="submissions.csv">
-            Download CSV
-          </CSVLink>
+      {!loading && (
+        <div className={styles.tableDiv}>
+          <div className={styles.csvDiv}>
+            <CSVLink data={csvData} filename="submissions.csv">
+              Download CSV
+            </CSVLink>
+          </div>
+          <h2>Dashboard</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email address</th>
+                <th>Destination</th>
+                <th>Travellers Count</th>
+                <th>Budget per person (in $)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((el) => {
+                return (
+                  <tr key={el._id}>
+                    <td>{`...${el._id.substr(el._id.length - 4)}`}</td>
+                    <td>{el.name}</td>
+                    <td>{el.email}</td>
+                    <td>{el.destination}</td>
+                    <td>{el.no_of_travellers}</td>
+                    <td>{el.budget_per_person}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className={styles.pagination}>
+            <button
+              onClick={() => {
+                setPage(page - 1);
+              }}
+              disabled={page === 1}
+            >
+              Prev
+            </button>
+            <span>{`Page ${page} of ${totalPages}`}</span>
+            <button
+              onClick={() => {
+                setPage(page + 1);
+              }}
+              disabled={page === totalPages}
+            >
+              Next
+            </button>
+          </div>
         </div>
-        <h2>Dashboard</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Email address</th>
-              <th>Destination</th>
-              <th>Travellers Count</th>
-              <th>Budget per person (in $)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((el) => {
-              return (
-                <tr key={el._id}>
-                  <td>{`...${el._id.substr(el._id.length - 4)}`}</td>
-                  <td>{el.name}</td>
-                  <td>{el.email}</td>
-                  <td>{el.destination}</td>
-                  <td>{el.no_of_travellers}</td>
-                  <td>{el.budget_per_person}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <div className={styles.pagination}>
-          <button
-            onClick={() => {
-              setPage(page - 1);
-            }}
-            disabled={page === 1}
-          >
-            Prev
-          </button>
-          <span>{`Page ${page} of ${totalPages}`}</span>
-          <button
-            onClick={() => {
-              setPage(page + 1);
-            }}
-            disabled={page === totalPages}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
