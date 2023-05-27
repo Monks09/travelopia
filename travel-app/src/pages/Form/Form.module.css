@@ -1,0 +1,42 @@
+.formPage {
+    width: 40%;
+    margin: auto;
+    padding: 1rem;
+    margin-bottom: 30px;
+}
+
+.formPage h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: teal;
+    margin: 10px 0px;
+}
+
+.formElement {
+    background-color: #5a5757;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 15px 0px;
+    border-bottom: 5px solid teal;
+}
+
+.formElement input,
+.formElement select {
+    background-color: #5a5757;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.bottomDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="submit"] {
+    background-color: teal;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}

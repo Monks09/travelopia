@@ -1,0 +1,8 @@
+.ConfirmSub {
+    text-align: center;
+}
+
+.ConfirmSub a {
+    text-decoration: underline;
+    color: red;
+}
